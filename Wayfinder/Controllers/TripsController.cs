@@ -24,7 +24,7 @@ namespace Wayfinder.Controllers
     }
 
     [HttpGet]
-    public async Task<ActionResult<List<Trip>>> Get()
+    public async Task<ActionResult<List<Trip>>> Get(string query = "")
     {
       try
       {

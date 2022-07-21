@@ -17,13 +17,14 @@ namespace Wayfinder.Repositories
 
     internal List<Trip> GetAll(string userId)
     {
+      // stringQuery = "%"+query+"%
       string sql = @"
       SELECT
         t.*,
         a.*
       FROM trips t
       JOIN accounts a ON t.creatorId = a.id
-      WHERE t.creatorId = @userId";
+      WHERE t.creatorId = @userId"; // AND name LIKE @stringQuery
       return _db.Query<Trip, Profile, Trip>(sql, (trip, prof) =>
       {
         trip.Creator = prof;
